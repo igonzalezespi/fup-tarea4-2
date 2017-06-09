@@ -1,0 +1,29 @@
+#Lista ciudades
+
+Coruña, Vigo, Valladolid, Oviedo, Bilbao, Zaragoza, Gerona, Barcelona, Madrid, Badajoz, Albacete, Valencia, Murcia, Jaén, Sevilla, Granada, Cádiz
+
+#Distancias entre ciudades
+
+Coruña Vigo 171
+Coruña Valladolid 455
+Vigo Valladolid 356
+Valladolid Bilbao 280
+Valladolid Madrid 193
+Oviedo Bilbao 304
+Bilbao Madrid 395
+Bilbao Zaragoza 324
+Madrid Zaragoza 325
+Zaragoza Barcelona 296
+Barcelona Gerona 100
+Valencia Barcelona 349
+Madrid Badajoz 403
+Madrid Jaén 335
+Madrid Albacete 251
+Albacete Valencia 191
+Albacete Murcia 150
+Murcia Granada 284
+Murcia Valencia 241
+Granada Jaén 99
+Granada Sevilla 256
+Jaén Sevilla 242
+Sevilla Cádiz 125

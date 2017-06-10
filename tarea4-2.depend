@@ -1,13 +1,13 @@
 # depslib dependency file v1.0
-1497099384 source:d:\drive\universidad\fup ii\tareas\tarea4\tarea4.2\graph.c
+1497107256 source:d:\drive\universidad\fup ii\tareas\tarea4\tarea4.2\graph.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"graph.h"
 
-1497099886 d:\drive\universidad\fup ii\tareas\tarea4\tarea4.2\graph.h
+1497107255 d:\drive\universidad\fup ii\tareas\tarea4\tarea4.2\graph.h
 
-1497098954 source:d:\drive\universidad\fup ii\tareas\tarea4\tarea4.2\main.c
+1497107418 source:d:\drive\universidad\fup ii\tareas\tarea4\tarea4.2\main.c
 	<stdio.h>
 	<ctype.h>
 	<windows.h>
@@ -19,7 +19,7 @@
 
 1497093337 d:\drive\universidad\fup ii\tareas\tarea4\tarea4.2\road.h
 
-1497099875 source:d:\drive\universidad\fup ii\tareas\tarea4\tarea4.2\road.c
+1497107266 source:d:\drive\universidad\fup ii\tareas\tarea4\tarea4.2\road.c
 	<stdio.h>
 	<string.h>
 	<windows.h>

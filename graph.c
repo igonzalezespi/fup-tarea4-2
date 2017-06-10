@@ -41,10 +41,11 @@ void listarNodos(P_NODO nod) {
   }
 }
 
-P_NODO nuevo(P_NODO nod, char nombre[150]) {
+P_NODO nuevo(P_NODO nod, char nombre[150], int index) {
   if(buscar(nod, nombre) == NULL) {
     P_NODO paux = (P_NODO) malloc(sizeof (NODO));
     strcpy(paux->nombre, nombre);
+    paux->index = index;
     paux->apunta = NULL;
 
     if (nod == NULL) {
@@ -61,9 +62,10 @@ P_NODO nuevo(P_NODO nod, char nombre[150]) {
   return nod;
 }
 
-void arco(P_NODO origen, P_NODO destino) {
+void arco(P_NODO origen, P_NODO destino, int peso) {
   P_ARCO paux = (P_ARCO) malloc(sizeof (ARCO));
 
+  paux->peso = peso;
   paux->apunta = destino;
   paux->sgte = origen->apunta;
   origen->apunta = paux;

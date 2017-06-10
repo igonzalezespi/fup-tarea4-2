@@ -7,6 +7,7 @@
 #include "graph.h"
 #include "road.h"
 
+int nodos = 0;
 P_NODO nod = NULL;
 
 //// Main
@@ -26,8 +27,12 @@ void show_menu() {
   puts("======================");
   puts("");
   puts("# Acciones");
-  puts("  C - Cargar y comprobar");
-  puts("  R - Ruta mas corta");
+  if (nodos == 0) {
+    puts("  1 - Cargar");
+  } else {
+    puts("  1 - Comprobar");
+  }
+  puts("  2 - Ruta mas corta");
   puts("  S - Salir");
 }
 
@@ -47,11 +52,12 @@ void execute() {
   CLEARSCR;
   if (option == 'S') {
     exit(EXIT_SUCCESS);
-  } else if (option == 'C') {
-    upload();
-    system("PAUSE");
-  } else if (option == 'R') {
-    shortest();
+  } else if (option == '1') {
+    if (nodos == 0) {
+      upload();
+    } else {
+      check_graph();
+    }
     system("PAUSE");
   }
   execute();

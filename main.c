@@ -7,7 +7,7 @@
 #include "graph.h"
 #include "road.h"
 
-node* road = NULL;
+P_NODO nod = NULL;
 
 //// Main
 

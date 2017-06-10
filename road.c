@@ -10,14 +10,14 @@
 
 void upload() {
   char aux[MAX_LENGTH];
-  char *city;
   char *city_aux;
   char *city_one;
   char *city_two;
-  node *node_aux;
-  int weight;
-  char *weight_aux;
+//  char *weight_aux;
+//  int weight;
+  P_NODO node_aux;
   FILE *file = fopen("./carreteras.txt", "r");
+
   if (file != NULL) {
     fgets(aux, MAX_LENGTH, file); // Basura
     fgets(aux, MAX_LENGTH, file); // Basura
@@ -25,41 +25,33 @@ void upload() {
     aux[strlen(aux)-1] = '\0';
     city_aux = strtok(aux, ", ");
     while (city_aux != NULL) {
-      city = (char*)malloc(sizeof(char)*strlen(city_aux)+1);
-      strcpy(city, city_aux);
-      road = create_node(road, city);
+      nod = nuevo(nod, city_aux);
       city_aux = strtok(NULL, ", ");
     }
-    list_nodes(road);
+    listarNodos(nod);
     fgets(aux, MAX_LENGTH, file); // Basura
     fgets(aux, MAX_LENGTH, file); // Basura
     fgets(aux, MAX_LENGTH, file); // Basura
     while (fgets(aux, MAX_LENGTH, file) != NULL) {
-      city_aux = strtok(aux, " ");
-      city_one = (char*)malloc(sizeof(char)*strlen(city_aux)+1);
-      strcpy(city_one, city_aux);
+      city_one = strtok(aux, " ");
+      city_two = strtok(NULL, " ");
+//      weight_aux = strtok(NULL, " ");
+//      weight = atoi(weight_aux);
 
-      city_aux = strtok(NULL, " ");
-      city_two = (char*)malloc(sizeof(char)*strlen(city_aux)+1);
-      strcpy(city_two, city_aux);
-
-      city_aux = strtok(NULL, " ");
-      weight_aux = (char*)malloc(sizeof(char)*strlen(city_aux)+1);
-      strcpy(weight_aux, city_aux);
-      weight = atoi(weight_aux);
-
-      create_arc(
-        search(road, city_one),
-        search(road, city_two),
-        weight
+      puts("1");
+      arco(
+        buscar(nod, city_one),
+        buscar(nod, city_two)
+//        weight
       );
+      puts("10");
     }
-    list_nodes(road);
-    node_aux = road;
+    listarNodos(nod);
+    node_aux = nod;
     while (node_aux != NULL) {
       puts("\n----ARCOS: -----");
-      list_arcs(road, node_aux->name);
-      node_aux = node_aux->next;
+      listarArcos(nod, node_aux->nombre);
+      node_aux = node_aux->sgte;
     }
     fclose(file);
   } else {
@@ -74,9 +66,4 @@ void check_graph() {
 
 void shortest() {
   puts("shortest!");
-}
-
-/////
-
-void clean_string(char c1[]) {
 }

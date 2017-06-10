@@ -4,79 +4,67 @@
 
 #include "graph.h"
 
-node* search(node *n, char *name) {
-  node *aux = n;
-  while (aux != NULL) {
-    if(strcmp(aux->name, name) == 0) {
-      return aux;
+
+P_NODO buscar(P_NODO nod, char nombre[150]) {
+  P_NODO paux = nod;
+  while (paux != NULL) {
+    if(strcmp(paux->nombre, nombre) == 0) {
+      return paux;
     } else {
-      aux = aux->next;
+      paux = paux->sgte;
     }
   }
   return NULL;
 }
 
-void list_arcs(node *nod, char *name) {
-  arc* arc;
-  node* aux = search(nod, name);
-  if(aux == NULL) {
-    puts("***El nodo no existe");
+void listarArcos(P_NODO nod, char s[150]) {
+  P_ARCO arc;
+  P_NODO paux = buscar(nod, s);
+  if(paux == NULL) {
+    printf("\n***El nodo no existe");
   } else {
-    printf("Nodo: %s", aux->name);
-    arc=aux->point;
+    printf("\nNodo: %s ", paux->nombre);
+    arc=paux->apunta;
     while (arc != NULL) {
-      printf("-> arc: %s (%i) ", arc->point->name, arc->weight);
-      arc = arc-> next;
+      printf("-> arco: %s ", arc->apunta->nombre);
+      arc = arc-> sgte;
     }
   }
 }
 
-void list_nodes(node* nod) {
-  node* aux = nod;
-  while (aux!= NULL) {
-    printf("Nodo: %s\n", aux->name);
-    aux = aux->next;
+void listarNodos(P_NODO nod) {
+  P_NODO paux = nod;
+
+  while (paux!= NULL) {
+    printf("\nNodo: %s ", paux->nombre);
+    paux = paux->sgte;
   }
 }
 
-node* create_node(node* nod, char *name) {
-  if(search(nod, name) == NULL) {
-    node* aux = (node*)malloc(sizeof(node));
-    aux->name = name;
-    aux->point = NULL;
+P_NODO nuevo(P_NODO nod, char nombre[150]) {
+  if(buscar(nod, nombre) == NULL) {
+    P_NODO paux = (P_NODO) malloc(sizeof (NODO));
+    strcpy(paux->nombre, nombre);
+    paux->apunta = NULL;
 
     if (nod == NULL) {
-      aux->next = NULL;
+      paux->sgte = NULL;
     } else {
-      aux->next = nod;
+      paux->sgte = nod;
     }
 
-    nod = aux;
+    nod = paux;
+    printf("\nNodo creado\n");
   } else {
-    puts("Nodo ya creado");
+    printf("\nNodo ya creado\n");
   }
   return nod;
 }
 
-void create_arc(node* origin, node* destiny, int weight) {
-  arc* aux = (arc*) malloc(sizeof (arc));
+void arco(P_NODO origen, P_NODO destino) {
+  P_ARCO paux = (P_ARCO) malloc(sizeof (ARCO));
 
-  aux->weight = weight;
-  aux->point = destiny;
-  aux->next = origin->point;
-  origin->point = aux;
-}
-
-void warshal(int p[10][10],int n) {
-  int i,j,k;
-  for (k=1; k<=n; k++)
-    for (i=1; i<=n; i++)
-      for (j=1; j<=n; j++)
-        p[i][j]=max(p[i][j],p[i][k]&&p[k][j]);
-}
-
-int max(int a,int b) {
-  if(a > b)
-    return(a);
-  return(b);
+  paux->apunta = destino;
+  paux->sgte = origen->apunta;
+  origen->apunta = paux;
 }

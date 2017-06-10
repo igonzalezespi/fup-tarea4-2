@@ -4,13 +4,16 @@
 #include <windows.h>
 
 #include "common.h"
+#include "graph.h"
+#include "road.h"
+
+node* road = NULL;
 
 //// Main
 
 int main() {
   SetConsoleTitle(TITLE);
   execute();
-  system("PAUSE");
   return (EXIT_SUCCESS);
 }
 
@@ -23,6 +26,8 @@ void show_menu() {
   puts("======================");
   puts("");
   puts("# Acciones");
+  puts("  C - Cargar y comprobar");
+  puts("  R - Ruta mas corta");
   puts("  S - Salir");
 }
 
@@ -42,8 +47,13 @@ void execute() {
   CLEARSCR;
   if (option == 'S') {
     exit(EXIT_SUCCESS);
+  } else if (option == 'C') {
+    upload();
+    system("PAUSE");
+  } else if (option == 'R') {
+    shortest();
+    system("PAUSE");
   }
-  system("PAUSE");
   execute();
 }
 

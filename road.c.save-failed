@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <string.h>
+#include <windows.h>
+
+#include "road.h"
+#include "graph.h"
+
+#define MAX_LENGTH 150
+#define WRONG_FORMAT "Archivo \"carreteras.txt\" mal formado"
+
+void upload() {
+  char aux[MAX_LENGTH];
+  char *city;
+  char *city_aux;
+  char *city_one;
+  char *city_two;
+  int weight;
+  char *weight_aux;
+  FILE *file = fopen("./carreteras.txt", "r");
+  if (file != NULL) {
+    fgets(aux, MAX_LENGTH, file); // Lista de ciudades
+    city = strtok(aux, ",");
+    while (city != NULL) {
+      clean_string(city);
+      road = create_node(road, city);
+      city = strtok(NULL, ",");
+    }
+    list_nodes(road);
+    puts("--------------");
+    while (fgets(aux, MAX_LENGTH, file) != NULL) {
+      city_aux = strtok(aux, ",");
+      city_one = (char*)malloc(sizeof(char)*strlen(city_aux));
+      strcpy(city_one, city_aux);
+
+      city_aux = strtok(NULL, ",");
+      city_two = (char*)malloc(sizeof(char)*strlen(city_aux));
+      strcpy(city_two, city_aux);
+
+      city_aux = strtok(NULL, ",");
+      weight_aux = (char*)malloc(sizeof(char)*strlen(city_aux));
+      strcpy(weight_aux, city_aux);
+      weight = atoi(weight_aux);
+
+      printf("CITY ONE: %s\n", city_one);
+      printf("CITY TWO: %s\n", city_two);
+      printf("WEIGHT_AUX: %i\n", weight);
+
+      list_nodes(road);
+      puts("--------------");
+      create_arc(
+        search(road, city_one),
+        search(road, city_two),
+        weight
+      );
+    }
+    puts("--------------");
+    list_nodes(road);
+    fclose(file);
+  } else {
+    puts("No se han encontrado las definiciones");
+    puts("Asegurese de que el archivo \"carreteras.txt\" se encuentre en este directorio.");
+  }
+}
+
+void check_graph() {
+  puts("check_graph!");
+}
+
+void shortest() {
+  puts("shortest!");
+}
+
+/////
+
+void clean_string(char c1[]) {
+}

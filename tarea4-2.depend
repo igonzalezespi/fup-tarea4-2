@@ -7,7 +7,7 @@
 
 1497107255 d:\drive\universidad\fup ii\tareas\tarea4\tarea4.2\graph.h
 
-1497107418 source:d:\drive\universidad\fup ii\tareas\tarea4\tarea4.2\main.c
+1497108764 source:d:\drive\universidad\fup ii\tareas\tarea4\tarea4.2\main.c
 	<stdio.h>
 	<ctype.h>
 	<windows.h>
@@ -19,10 +19,12 @@
 
 1497093337 d:\drive\universidad\fup ii\tareas\tarea4\tarea4.2\road.h
 
-1497107266 source:d:\drive\universidad\fup ii\tareas\tarea4\tarea4.2\road.c
+1497108745 source:d:\drive\universidad\fup ii\tareas\tarea4\tarea4.2\road.c
 	<stdio.h>
 	<string.h>
 	<windows.h>
+	<limits.h>
+	"common.h"
 	"road.h"
 	"graph.h"
 

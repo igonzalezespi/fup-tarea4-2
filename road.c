@@ -3,6 +3,7 @@
 #include <windows.h>
 #include <limits.h>
 
+#include "common.h"
 #include "road.h"
 #include "graph.h"
 
@@ -133,70 +134,29 @@ void check_graph() {
 }
 
 void shortest() {
-//  int check[nodos][nodos];
-//  int i, j;
-//  P_NODO ii, jj, kk;
-//  P_ARCO arc;
-//  char ciudades[nodos][150];
-//  int fallo;
-//
-//  // Inicializamos a infinito
-//  for (i = 0; i<nodos; i++) {
-//    for (j = 0; j<nodos; j++) {
-//      check[i][j] = INT_MAX;
-//    }
-//  }
-//  // Hacemos la matriz de pesos
-//  ii = nod;
-//  while (ii != NULL) {
-//    strcpy(ciudades[ii->index], ii->nombre);
-//
-//    arc=ii->apunta;
-//    while (arc != NULL) {
-//      check[ii->index][arc->apunta->index] = arc->peso;
-//      // La consideramos sin dirección
-//      check[arc->apunta->index][ii->index] = arc->peso;
-//      arc = arc-> sgte;
-//    }
-//    ii = ii->sgte;
-//  }
-//  // Hacemos Warshall para comprobar que es conexo
-//  kk = nod;
-//  while (kk != NULL) {
-//    ii = nod;
-//    while (ii != NULL) {
-//      jj = nod;
-//      while (jj != NULL) {
-//        if (check[ii->index][jj->index] != 1) {
-//          if (
-//            check[ii->index][kk->index] == 1
-//            &&
-//            check[kk->index][jj->index] == 1
-//          ) {
-//            check[ii->index][jj->index] = 1;
-//          }
-//        }
-//        jj = jj->sgte;
-//      }
-//      ii = ii->sgte;
-//    }
-//    kk = kk->sgte;
-//  }
-//  // Recorremos ahora en busca de alguien sin relación
-//  for (i = 0; i<nodos; i++) {
-//    fallo = 1;
-//    for (j = 0; j<nodos; j++) {
-//      if (fallo == 1 && check[i][j]) {
-//        fallo = 0;
-//      }
-//    }
-//    if (fallo == 1) {
-//      puts("Archivo no valido.");
-//      printf("%s es inalcanzable.\n", ciudades[i]);
-//      break;
-//    }
-//  }
-//  if (fallo == 0) {
-//    puts("Archivo valido.");
-//  }
+  char aux_origin[MAX_LENGTH],
+       aux_destiny[MAX_LENGTH];
+  P_NODO origin_node,
+         destiny_node;
+//         current_node;
+//  int i;
+//      path[nodos];
+
+  CLEARSCR;
+  puts("Indique la ciudad origen:");
+  scanf(" %150s", aux_origin);
+  origin_node = buscar(nod, aux_origin);
+  if (origin_node != NULL) {
+    puts("Indique la ciudad destino:");
+    scanf(" %150s", aux_destiny);
+    destiny_node = buscar(nod, aux_destiny);
+    if (destiny_node != NULL) {
+      // Aquí me quedo, no me da tiempo...
+//      printf(dijkstra(aux_origin, aux_destiny));
+    } else {
+      puts("Ciudad no existe");
+    }
+  } else {
+    puts("Ciudad no existe");
+  }
 }

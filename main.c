@@ -59,6 +59,9 @@ void execute() {
       check_graph();
     }
     system("PAUSE");
+  } else if (option == '2') {
+    shortest();
+    system("PAUSE");
   }
   execute();
 }
